@@ -42,9 +42,9 @@ function App() {
         setPeli( pelisNuevas)
       }
     }else if (id === pelisNuevas.length+1){
-      const indice = pelisNuevas.findIndex(peliculas => peliculas.id === id+1)
-        console.log('El indice es '+indice)
-        pelisNuevas[indice].id = id
+      const indice = pelisNuevas.findIndex(peliculas => peliculas.id === id-1)
+        console.log('Llego aquí. El indice es '+indice)
+        pelisNuevas[indice].id = id-1
         console.log( pelisNuevas)
         setPeli( pelisNuevas)
     }

@@ -7,6 +7,9 @@ function App() {
   const [peli, setPeli] = useState([
     { id: 1, name: 'Avengers', state:false },
     { id: 2, name: 'Iron Man', state:false },
+    { id: 3, name: 'Iron Man 2', state:false },
+    { id: 4, name: 'Iron Man 3', state:false },
+    { id: 5, name: 'End Game', state:false },
   ])
 
   const addNewPeli = (value) => {
@@ -25,13 +28,26 @@ function App() {
   }
 
   const deletePeli = (valor) =>{
-   
+    const id = valor.id
+    console.log('El id es '+ id)
     const pelisNuevas = [...peli]
     pelisNuevas.splice(pelisNuevas.findIndex(peliculas => peliculas.id === valor.id),1)
-    console.log(pelisNuevas)
-    const id = valor.id
-    console.log(id)
-    setPeli(pelisNuevas)
+    console.log('La longitud es' + pelisNuevas.length)
+    if (id<=pelisNuevas.length){
+      for (let i=id; i<=(pelisNuevas.length); i++){
+        const indice = pelisNuevas.findIndex(peliculas => peliculas.id === i+1)
+        console.log('El indice es '+indice)
+        pelisNuevas[indice].id = i
+        console.log( pelisNuevas)
+        setPeli( pelisNuevas)
+      }
+    }else if (id === pelisNuevas.length+1){
+      const indice = pelisNuevas.findIndex(peliculas => peliculas.id === id+1)
+        console.log('El indice es '+indice)
+        pelisNuevas[indice].id = id
+        console.log( pelisNuevas)
+        setPeli( pelisNuevas)
+    }
   }
 
   return (
